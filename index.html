@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescento</title>
+    <!-- Enlazamos el archivo CSS -->
+    <link rel="stylesheet" href="styles_main.css">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="index.html" class="logo">
+            <img src="../main/img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../main/img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="perfil.html" class="profile-icon">
+            <img src="../main/img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor principal de la página -->
+    <main>
+        <div class="main-content">
+            <!-- Sección de categorías (botones) -->
+            <aside class="category-buttons">
+                <button onclick="location.href='deporte.html'">Deporte</button>
+                <button onclick="location.href='tecnologia.html'">Tecnología</button>
+                <button onclick="location.href='arte.html'">Arte</button>
+                <button onclick="location.href='videojuegos.html'">Videojuegos</button>
+                <button onclick="location.href='musica.html'">Música</button>
+                <button onclick="location.href='educacion.html'">Educacion</button>
+                <button onclick="location.href='emprendimiento.html'">Emprendimientos</button>
+            </aside>
+
+            <!-- Sección de Proyectos populares con imágenes que cambian -->
+            <section class="popular-projects-section">
+                <!-- Título de la sección -->
+                <h2 class="section-title">Proyectos populares</h2>
+                <!-- Contenedor de las imágenes -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <!-- Cada imagen de proyecto está dentro de un enlace -->
+                        <a href="proyecto1.html"><img src="../main/img/project1.jpeg" alt="Proyecto 1"></a>
+                        <a href="proyecto2.html"><img src="../main/img/project2.jpeg" alt="Proyecto 2"></a>
+                        <a href="proyecto3.html"><img src="../main/img/project3.jpeg" alt="Proyecto 3"></a>
+                    </div>
+                    <!-- Puntos de navegación -->
+                    <div class="carousel-dots">
+                        <span onclick="showSlide(0)" class="dot"></span>
+                        <span onclick="showSlide(1)" class="dot"></span>
+                        <span onclick="showSlide(2)" class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Enlazamos el archivo JavaScript -->
+    <script src="script_main.js"></script>
+</body>
+</html>
