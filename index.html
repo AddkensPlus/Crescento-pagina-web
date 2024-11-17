@@ -12,16 +12,16 @@
     <header>
         <!-- Logo de la página, enlaza a la página principal -->
         <a href="index.html" class="logo">
-            <img src="logo oscuro.png" alt="Logo Crescento">
+            <img src="../main/img/logo oscuro.png" alt="Logo Crescento">
         </a>
         <!-- Barra de búsqueda -->
         <div class="search-bar">
-            <img src="lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <img src="../main/img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
             <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
         </div>
         <!-- Icono de perfil, enlaza a la página de perfil -->
         <a href="perfil.html" class="profile-icon">
-            <img src="perfil.png" alt="Icono de perfil">
+            <img src="../main/img/perfil.png" alt="Icono de perfil">
         </a>
     </header>
 
@@ -47,9 +47,9 @@
                 <div class="carousel">
                     <div class="carousel-images">
                         <!-- Cada imagen de proyecto está dentro de un enlace -->
-                        <a href="proyecto1.html"><img src="project1.jpeg" alt="Proyecto 1"></a>
-                        <a href="proyecto2.html"><img src="project2.jpeg" alt="Proyecto 2"></a>
-                        <a href="proyecto3.html"><img src="project3.jpeg" alt="Proyecto 3"></a>
+                        <a href="proyecto1.html"><img src="../main/img/project1.jpeg" alt="Proyecto 1"></a>
+                        <a href="proyecto2.html"><img src="../main/img/project2.jpeg" alt="Proyecto 2"></a>
+                        <a href="proyecto3.html"><img src="../main/img/project3.jpeg" alt="Proyecto 3"></a>
                     </div>
                     <!-- Puntos de navegación -->
                     <div class="carousel-dots">
@@ -60,6 +60,30 @@
                 </div>
             </section>
         </div>
+
+        <section class="discover-projects">
+            <!-- Contenedor para el color de fondo que ocupa toda la página -->
+            <div class="discover-background">
+                <!-- Contenedor del contenido con márgenes respetados -->
+                <div class="discover-container">
+                    <!-- Título de la sección -->
+                    <h2 class="discover-title">Descubre nuevos proyectos</h2>
+                    <!-- Carrusel -->
+                    <div class="discover-carousel">
+                        <button class="discover-arrow left" onclick="scrollDiscover(-1)">&#x276E;</button>
+                        <div class="discover-projects-container">
+                            <div class="discover-project"><img src="../main/img/project1.jpeg" alt="Proyecto 1"></div>
+                            <div class="discover-project"><img src="../main/img/project2.jpeg" alt="Proyecto 2"></div>
+                            <div class="discover-project"><img src="../main/img/project3.jpeg" alt="Proyecto 3"></div>
+                            <div class="discover-project"><img src="../main/img/project4.jpeg" alt="Proyecto 4"></div>
+                            <div class="discover-project"><img src="../main/img/project5.jpeg" alt="Proyecto 5"></div>
+                            <div class="discover-project"><img src="../main/img/project6.jpeg" alt="Proyecto 6"></div>
+                        </div>
+                        <button class="discover-arrow right" onclick="scrollDiscover(1)">&#x276F;</button>
+                    </div>
+                </div>
+            </div>
+        </section>        
     </main>
 
     <!-- Enlazamos el archivo JavaScript -->

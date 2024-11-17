@@ -34,3 +34,19 @@ setInterval(autoSlide, 5000);
 dots.forEach((dot, index) => {
     dot.addEventListener('click', () => showSlide(index));
 });
+
+
+// Índice actual del carrusel
+let discoverIndex = 0;
+
+// Función para desplazarse en el carrusel
+function scrollDiscover(direction) {
+    const container = document.querySelector('.discover-projects-container');
+    const totalProjects = document.querySelectorAll('.discover-project').length;
+
+    // Calcula el nuevo índice (asegurando que no salga de los límites)
+    discoverIndex = Math.max(0, Math.min(discoverIndex + direction, totalProjects - 3));
+
+    // Mueve el carrusel para mostrar los proyectos correctos 310
+    container.style.transform = `translateX(-${discoverIndex * 383}px)`;
+}
