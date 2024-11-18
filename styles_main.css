@@ -58,6 +58,7 @@ header {
     max-width: 1200px; /* Ancho máximo para centrar el contenido */
     width: 100%;
     padding: 20px;
+    padding-left: 100px;
     gap: 20px;
     justify-content: center; /* Centra el contenido dentro de la página */
 }
@@ -148,4 +149,100 @@ header {
 
 .dot.active {
     background-color: gray;
+}
+
+
+/* Nueva sección: Descubre nuevos proyectos */
+.discover-projects {
+    margin: 0; /* Elimina márgenes para que el fondo se extienda */
+    padding: 0;
+}
+
+.discover-background {
+    background-color: #bc8741; /* Fondo que ocupa toda la página */
+    display: flex;
+    max-width: 1344px; /* Ancho máximo para centrar el contenido */
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto; /* Centra el contenido */   
+}
+
+/* Contenedor del contenido que respeta los márgenes */
+.discover-container {
+    width: 90%; /* Márgenes laterales establecidos previamente */
+    margin: 0 auto; /* Centra el contenido */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Título de la sección */
+.discover-title {
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Carrusel */
+.discover-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Botones de flechas */
+.discover-arrow {
+    background-color: #ffffff;
+    border: none;
+    color: #bc8741;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.discover-arrow.left {
+    left: 0px;
+}
+
+.discover-arrow.right {
+    right: 0px;
+}
+
+/* Contenedor de proyectos */
+.discover-projects-container {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+    width: calc(300px * 5); /* 5 proyectos */
+}
+
+/* Estilo de cada proyecto */
+.discover-project {
+    flex: 0 0 300px; /* Cada proyecto ocupa un ancho fijo */
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 73px;   
+}
+
+.discover-project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animacion de escala al pasar el mouse */
+.discover-project:hover {
+    transform: scale(1.1);
 }
