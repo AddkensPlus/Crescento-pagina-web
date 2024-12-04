@@ -72,7 +72,7 @@ header {
 
 .category-buttons button {
     background-color: #ffffff;
-    color: #98968a;
+    color: gray;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -82,7 +82,7 @@ header {
 }
 
 .category-buttons button:hover {
-    background-color: #98968a;
+    background-color: #bc8741;
     color: #ffffff;
 }
 
@@ -152,7 +152,7 @@ header {
 }
 
 
-/* Nueva sección: Descubre nuevos proyectos */
+/* Sección "Descubre nuevos proyectos" */
 .discover-projects {
     margin: 0; /* Elimina márgenes para que el fondo se extienda */
     padding: 0;
@@ -245,4 +245,74 @@ header {
 /* Animacion de escala al pasar el mouse */
 .discover-project:hover {
     transform: scale(1.1);
+}
+
+
+/* Sección Sobre Nosotros */
+.about-us {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.about-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    color: #bc8741; /* Color acorde al diseño */
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    text-align: justify;
+    color: #4a4a4a; /* Texto en gris oscuro */
+    line-height: 1.8; /* Espaciado entre líneas */
+    margin-bottom: 20px; /* Separación entre párrafos */
+}
+
+
+/* Pie de página */
+footer {
+    background-color: #bc8741;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+footer img {
+    width: 500px;
+    padding-left: 300px;
+    padding-top: 30px;
+}
+
+footer h3 {
+    margin: 0 0 10px 0;
+    color: white;
+    padding-right: 450px;
+    padding-top: 70px;
+    padding-bottom: 5px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin-bottom: 15px; /* Espacio debajo de cada texto */
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
 }
