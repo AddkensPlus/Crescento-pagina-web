@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido</title>
+    <link rel="stylesheet" href="contenido.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="../perfil/perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor de contenido principal -->
+    <main>
+        <!-- Primer contenedor: Proyecto destacado -->
+        <section class="project-container">
+            <div class="project-image">
+                <img src="../img/project5.jpeg" alt="Imagen del proyecto">
+            </div>
+
+            <div class="project-info">
+                <h2 class="project-title">Rux Robot: Fun and Practical Desktop AI Robot</h2>
+                <p class="project-description">Mejora tu rutina diaria con Rux Robot: ¡Tu compañero de IA multifuncional!</p>
+                <p class="project-donations">Inversion total: $0 COP</p>
+                <button class="invest-button">Invertir en este proyecto</button>
+            </div>
+        </section>
+
+
+        <!-- Contenedor alternativo (color #bc8741) -->
+        <section class="custom-container bc8741">
+            <h2 class="custom-title">Introducción</h2>
+            <div class="centered-image">
+                <img src="../img/rux1.jpeg" alt="Producto del proyecto">
+            </div>
+            <p class="custom-text">Rux Robot es un robot de escritorio con inteligencia artificial diseñado para ofrecer entretenimiento, productividad y personalización en un solo dispositivo. Basado en un sistema operativo Android, Rux puede realizar múltiples tareas, como actuar como asistente personal, jugar juegos interactivos, reproducir música, realizar monitoreo de salud, y hasta funcionar como unidad de vigilancia doméstica. Su capacidad para integrarse con iPhone y dispositivos Android asegura una experiencia sin interrupciones para todos los usuarios.</p>
+
+            <p class="custom-text">Lo que diferencia a Rux de otros dispositivos es su sistema BotLife Personality AI, que permite que el robot desarrolle una personalidad única adaptada a sus interacciones con el usuario. Además, su diseño incluye una antena magnética y luces LED de 1600W, añadiendo un toque futurista y personalizable. Rux también cuenta con una estación de carga llamada "Rux Home", diseñada con un estilo similar a una estación de lanzamiento espacial.</p>
+        </section>
+
+        <!-- Contenedor alternativo (color #f6f4f3) -->
+        <section class="custom-container f6f4f3">
+            <div class="flex-container">
+                <div class="left-image">
+                    <img src="../img/rux2.jpg" alt="Otra imagen">
+                </div>
+
+                <div class="right-text">
+                    <h2 class="custom-title2">Novedades</h2>
+                    <p>El Rux Robot se posiciona como una innovación en el ámbito de los robots de escritorio gracias a sus características avanzadas y multifuncionales:</p>
+
+                    <p><b>Sistema Operativo Android Integrado: </b>Es el primer robot de escritorio con un sistema operativo Android, lo que le permite realizar tareas como multitasking fluido, aplicaciones personalizables y una experiencia interactiva dinámica. Esto lo convierte en un asistente personal, herramienta de productividad y centro de entretenimiento en un solo dispositivo</p>
+                        
+                    <p><b>Personalización con BotLife AI: </b>Rux utiliza la tecnología BotLife Personality AI para adaptarse a cada usuario. Aprende de las interacciones y desarrolla una personalidad única, ofreciendo conversaciones más naturales y experiencias personalizadas</p>
+
+                    <p><b>Diseño Interactivo y Estético: </b>Incluye una antena magnética y luces LED de 1600W, combinando funcionalidad y estética. Además, su estación de carga, conocida como "Rux Home", está diseñada como una mini estación de lanzamiento espacial, ofreciendo estilo y comodidad</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Modal para invertir -->
+    <div id="invest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invertir en este proyecto</h2>
+            <form id="investment-form">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" required placeholder="Nombre - Apellido">
+
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+                <label for="expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="expiration" required maxlength="5" placeholder="MM/AA">
+
+                <label for="cvv">Código CVV:</label>
+                <input type="password" id="cvv" required maxlength="3" placeholder="123">
+
+                <label for="amount">Cantidad a invertir (COP):</label>
+                <input type="number" id="amount" required min="1000" step="1000" placeholder="Min. 1000 COP">
+
+                <button type="submit" class="submit-button">Confirmar inversión</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase desde CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, set, get, update, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAbSzqzrVS57vELGI-G6ucRbyp3kpglcg",
+            authDomain: "crescentobd-df080.firebaseapp.com",
+            databaseURL: "https://crescentobd-df080-default-rtdb.firebaseio.com",
+            projectId: "crescentobd-df080",
+            storageBucket: "crescentobd-df080.appspot.com",
+            messagingSenderId: "632561275915",
+            appId: "1:632561275915:web:0940af834cbf31a819a30e",
+            measurementId: "G-46K91H4PVE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Referencias HTML y lógica de inversión
+        const investButton = document.querySelector(".invest-button");
+        const modal = document.getElementById("invest-modal");
+        const closeButton = document.querySelector(".close-button");
+        const investmentForm = document.getElementById("investment-form");
+        const donationsElement = document.querySelector(".project-donations");
+
+        const projectKey = "robot";
+        const projectRef = ref(db, `projects/${projectKey}`);
+
+        // Actualiza las donaciones mostradas
+        onValue(projectRef, (snapshot) => {
+            const data = snapshot.val();
+            const totalDonations = data ? data.totalDonations : 0;
+            donationsElement.textContent = `Inversion total: $${totalDonations} COP`;
+        });
+
+        // Abrir modal
+        investButton.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal
+        closeButton.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Manejo del formulario
+        investmentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("amount").value, 10);
+
+            if (isNaN(amount) || amount < 1000) {
+                alert("Por favor, ingresa una cantidad válida (mínimo 1000 COP).");
+                return;
+            }
+
+            get(projectRef).then((snapshot) => {
+                const data = snapshot.val();
+                const currentTotal = data ? data.totalDonations : 0;
+
+                update(projectRef, { totalDonations: currentTotal + amount })
+                    .then(() => {
+                        alert("¡Gracias por tu inversión!");
+                        modal.style.display = "none";
+                        investmentForm.reset();
+                    })
+                    .catch((error) => console.error("Error al actualizar donaciones:", error));
+            }).catch((error) => console.error("Error al obtener donaciones:", error));
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

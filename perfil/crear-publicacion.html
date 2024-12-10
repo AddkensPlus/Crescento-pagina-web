@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Publicación</title>
+    <link rel="stylesheet" href="crear-publicacion.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado reutilizado -->
+    <header>
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda">
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <a href="perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Sección principal -->
+    <main>
+        <h1 class="main-title">Crear un Nuevo Proyecto</h1>
+        <form class="create-form" action="#" method="POST">
+        <!-- Información general del proyecto -->
+            <fieldset>
+                <legend>Información General</legend>
+                <label for="project-title">Título del Proyecto:</label>
+                <input type="text" id="project-title" name="project-title" placeholder="Escribe el título del proyecto" required>
+
+                <label for="project-description">Descripción Breve:</label>
+                <textarea id="project-description" name="project-description" placeholder="Describe brevemente tu proyecto" rows="4" required></textarea>
+
+                <label for="project-image">Imagen Principal:</label>
+                <input type="file" id="project-image" name="project-image" accept="image/*" required>
+
+                <label for="initial-donation">Monto Inicial de Donación (COP):</label>
+                <input type="number" id="initial-donation" name="initial-donation" placeholder="Ejemplo: 100000" min="0" required>
+            </fieldset>
+
+            <!-- Introducción -->
+            <fieldset>
+                <legend>Introducción</legend>
+                <label for="project-introduction">Introduce tu proyecto:</label>
+                <textarea id="project-introduction" name="project-introduction" placeholder="Escribe una introducción detallada" rows="6" required></textarea>
+
+                <label for="introduction-image">Imagen de la Introducción:</label>
+                <input type="file" id="introduction-image" name="introduction-image" accept="image/*" required>
+            </fieldset>
+
+
+            <!-- Información adicional -->
+            <fieldset>
+                <legend>Información Adicional</legend>
+                <label for="additional-details">Detalles Extra:</label>
+                <textarea id="additional-details" name="additional-details" placeholder="Agrega más información sobre tu proyecto" rows="6"></textarea>
+
+                <label for="additional-images">Imágenes Relacionadas:</label>
+                <input type="file" id="additional-images" name="additional-images" accept="image/*" multiple>
+            </fieldset>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="submit-button">Publicar Proyecto</button>
+        </form>
+</main>
+</body>
+</html>

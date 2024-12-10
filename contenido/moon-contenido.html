@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido</title>
+    <link rel="stylesheet" href="contenido.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="../perfil/perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor de contenido principal -->
+    <main>
+        <!-- Primer contenedor: Proyecto destacado -->
+        <section class="project-container">
+            <div class="project-image">
+                <img src="../img/project2.jpeg" alt="Imagen del proyecto">
+            </div>
+
+            <div class="project-info">
+                <h2 class="project-title">3 Worlds / 3 Moons / 3 Years</h2>
+                <p class="project-description">El punto de partida de nuestro nuevo universo, ¡con Jonathan Hickman, Mike del Mundo, Mike Huddleston, Nick Spencer y muchos más!</p>
+                <p class="project-donations">Inversion total: $0 COP</p>
+                <button class="invest-button">Invertir en este proyecto</button>
+            </div>
+        </section>
+
+
+        <!-- Contenedor alternativo (color #bc8741) -->
+        <section class="custom-container bc8741">
+            <h2 class="custom-title">Introducción</h2>
+            <div class="centered-image">
+                <img src="../img/moon1.jpeg" alt="Producto del proyecto">
+            </div>
+            <p class="custom-text">3 Worlds / 3 Moons (3W3M) es un innovador proyecto de creación de universo liderado por Jonathan Hickman, Mike del Mundo, Mike Huddleston y Nick Spencer. Más que una simple serie de cómics o un libro, este proyecto busca establecer un universo completo, lleno de historias interconectadas, mitologías ricas y un diseño visual distintivo. Iniciado en 2021, 3W3M ha evolucionado con la participación de más de 30,000 suscriptores y ha generado más de 1,000 páginas de contenido de cómics y construcción de mundo hasta la fecha.</p>
+
+            <p class="custom-text">El concepto se centra en tres mundos y tres lunas que interactúan como una base para múltiples historias, explorando temas como la política, la ecología y la conexión humana. Además, el proyecto incluye elementos interactivos como newsletters que comparten procesos detrás de escena y construyen una comunidad activa en torno a la narrativa. Recientemente, se lanzó un Kickstarter para publicar "3W3M [ONE]", una colección que servirá como introducción a este vasto universo, incluyendo historias principales y arte espectacular que conectan las piezas clave de este mundo expansiv</p>
+        </section>
+
+        <!-- Contenedor alternativo (color #f6f4f3) -->
+        <section class="custom-container f6f4f3">
+            <div class="flex-container">
+                <div class="left-image">
+                    <img src="../img/moon2.jpeg" alt="Otra imagen">
+                </div>
+
+                <div class="right-text">
+                    <h2 class="custom-title2">Sobre el proyecto</h2>
+                    <p>El libro "3W3M [ONE]" es una edición inaugural que sirve como la puerta de entrada definitiva al vasto universo de 3 Worlds / 3 Moons. Presenta una colección de historias centrales que establecen el trasfondo y las bases narrativas de este mundo expansivo, con un enfoque en los tres mundos y sus lunas interconectadas. Disponible en formato de lujo, ya sea como un solo tomo en tapa dura o en tres ediciones de prestigio independientes, el libro combina narrativas cautivadoras con un arte visual impresionante que captura la rica complejidad de este universo.</p>
+
+                    <p>Además de las historias, el libro incluye una profunda exploración de la mitología y la construcción de este universo, resultado de años de desarrollo colaborativo entre los creadores y una comunidad comprometida de suscriptores. Este volumen no solo introduce a los personajes y conflictos principales, sino que también refleja la visión artística única del equipo creativo, haciendo de "3W3M [ONE]" una pieza esencial para cualquier aficionado al cómic o amante de la ciencia ficción y la fantasía</p>
+                        
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Modal para invertir -->
+    <div id="invest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invertir en este proyecto</h2>
+            <form id="investment-form">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" required placeholder="Nombre - Apellido">
+
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+                <label for="expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="expiration" required maxlength="5" placeholder="MM/AA">
+
+                <label for="cvv">Código CVV:</label>
+                <input type="password" id="cvv" required maxlength="3" placeholder="123">
+
+                <label for="amount">Cantidad a invertir (COP):</label>
+                <input type="number" id="amount" required min="1000" step="1000" placeholder="Min. 1000 COP">
+
+                <button type="submit" class="submit-button">Confirmar inversión</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase desde CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, set, get, update, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAbSzqzrVS57vELGI-G6ucRbyp3kpglcg",
+            authDomain: "crescentobd-df080.firebaseapp.com",
+            databaseURL: "https://crescentobd-df080-default-rtdb.firebaseio.com",
+            projectId: "crescentobd-df080",
+            storageBucket: "crescentobd-df080.appspot.com",
+            messagingSenderId: "632561275915",
+            appId: "1:632561275915:web:0940af834cbf31a819a30e",
+            measurementId: "G-46K91H4PVE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Referencias HTML y lógica de inversión
+        const investButton = document.querySelector(".invest-button");
+        const modal = document.getElementById("invest-modal");
+        const closeButton = document.querySelector(".close-button");
+        const investmentForm = document.getElementById("investment-form");
+        const donationsElement = document.querySelector(".project-donations");
+
+        const projectKey = "moon";
+        const projectRef = ref(db, `projects/${projectKey}`);
+
+        // Actualiza las donaciones mostradas
+        onValue(projectRef, (snapshot) => {
+            const data = snapshot.val();
+            const totalDonations = data ? data.totalDonations : 0;
+            donationsElement.textContent = `Inversion total: $${totalDonations} COP`;
+        });
+
+        // Abrir modal
+        investButton.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal
+        closeButton.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Manejo del formulario
+        investmentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("amount").value, 10);
+
+            if (isNaN(amount) || amount < 1000) {
+                alert("Por favor, ingresa una cantidad válida (mínimo 1000 COP).");
+                return;
+            }
+
+            get(projectRef).then((snapshot) => {
+                const data = snapshot.val();
+                const currentTotal = data ? data.totalDonations : 0;
+
+                update(projectRef, { totalDonations: currentTotal + amount })
+                    .then(() => {
+                        alert("¡Gracias por tu inversión!");
+                        modal.style.display = "none";
+                        investmentForm.reset();
+                    })
+                    .catch((error) => console.error("Error al actualizar donaciones:", error));
+            }).catch((error) => console.error("Error al obtener donaciones:", error));
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

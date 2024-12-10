@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido</title>
+    <link rel="stylesheet" href="contenido.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="../perfil/perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor de contenido principal -->
+    <main>
+        <!-- Primer contenedor: Proyecto destacado -->
+        <section class="project-container">
+            <div class="project-image">
+                <img src="../img/project3.jpeg" alt="Imagen del proyecto">
+            </div>
+
+            <div class="project-info">
+                <h2 class="project-title">The Castle in the Sky - Luxury Art Playing Cards</h2>
+                <p class="project-description">Naipes con arte antropomórfico, extravagantes, totalmente personalizados e ilustrados, inspirados en la Inglaterra medieval y el Japón Edo.</p>
+                <p class="project-donations">Inversion total: $0 COP</p>
+                <button class="invest-button">Invertir en este proyecto</button>
+            </div>
+        </section>
+
+
+        <!-- Contenedor alternativo (color #bc8741) -->
+        <section class="custom-container bc8741">
+            <h2 class="custom-title">Introducción</h2>
+            <div class="centered-image">
+                <img src="../img/carta1.PNG" alt="Producto del proyecto">
+            </div>
+            <p class="custom-text">El castillo en el cielo es una baraja de cartas de póquer de edición limitada y sin bordes, junto con una vitrina exclusiva y láminas artísticas de calidad de galería. Es la culminación de diez años de obras de arte adaptadas a un nuevo lienzo, mientras seguimos a los gatos Nenya y a los conejos Coney mientras surcan el aire. Con tu ayuda para crear y hacer crecer este proyecto, espero alcanzar el cielo y traerte un trocito de él de vuelta.</p>
+
+            <p class="custom-text">Impreso por Print Tokyo, una imprenta de bellas artes a medida, en papel washi japonés 'Premio Unryu' de 165 g/m² de la fábrica Awagami, elaborado y producido por la familia Fujimori en Tokushima, Japón. Premio Unryu está hecho de Kozo (morera) con fibras orgánicas visibles y gruesas. Todas las impresiones están hechas en papel A4 de 210 x 295 mm con márgenes de 45 mm desde la obra de arte y márgenes de 15 mm para enmarcar. La opción de tener la obra de arte sola o agregar el borde del patrón del proyecto de color en la impresión está disponible para todas las piezas y se registrará junto con las impresiones de arte seleccionadas en la encuesta de la campaña.</p>
+        </section>
+
+        <!-- Contenedor alternativo (color #f6f4f3) -->
+        <section class="custom-container f6f4f3">
+            <div class="flex-container">
+                <div class="left-image">
+                    <img src="../img/carta2.jpeg" alt="Otra imagen">
+                </div>
+
+                <div class="right-text">
+                    <h2 class="custom-title2">Sobre este proyecto</h2>
+                    <p>"The Castle in the Sky - Luxury Art Playing Cards" es una baraja de cartas de lujo completamente ilustrada, diseñada con un enfoque artístico que combina la fantasía de la Inglaterra medieval y el Japón de la era Edo. Cada carta presenta personajes antropomorfos como gatos y conejos, meticulosamente dibujados a mano, lo que convierte esta baraja en una obra de arte única y coleccionable. El diseño no solo destaca por su estética, sino también por su calidad premium, ideal para amantes del arte y coleccionistas.</p>
+
+                    <p>Además de las cartas, el proyecto incluye elementos exclusivos como impresiones de calidad de galería y un estuche de exhibición para coleccionistas. Estas cartas van más allá de su funcionalidad tradicional, transformándose en piezas decorativas que cuentan historias y reflejan una combinación exquisita de culturas e imaginación. Este proyecto es un testimonio de cómo el arte puede elevar un objeto cotidiano, haciendo de esta baraja una verdadera joya artística.</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Modal para invertir -->
+    <div id="invest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invertir en este proyecto</h2>
+            <form id="investment-form">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" required placeholder="Nombre - Apellido">
+
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+                <label for="expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="expiration" required maxlength="5" placeholder="MM/AA">
+
+                <label for="cvv">Código CVV:</label>
+                <input type="password" id="cvv" required maxlength="3" placeholder="123">
+
+                <label for="amount">Cantidad a invertir (COP):</label>
+                <input type="number" id="amount" required min="1000" step="1000" placeholder="Min. 1000 COP">
+
+                <button type="submit" class="submit-button">Confirmar inversión</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase desde CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, set, get, update, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAbSzqzrVS57vELGI-G6ucRbyp3kpglcg",
+            authDomain: "crescentobd-df080.firebaseapp.com",
+            databaseURL: "https://crescentobd-df080-default-rtdb.firebaseio.com",
+            projectId: "crescentobd-df080",
+            storageBucket: "crescentobd-df080.appspot.com",
+            messagingSenderId: "632561275915",
+            appId: "1:632561275915:web:0940af834cbf31a819a30e",
+            measurementId: "G-46K91H4PVE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Referencias HTML y lógica de inversión
+        const investButton = document.querySelector(".invest-button");
+        const modal = document.getElementById("invest-modal");
+        const closeButton = document.querySelector(".close-button");
+        const investmentForm = document.getElementById("investment-form");
+        const donationsElement = document.querySelector(".project-donations");
+
+        const projectKey = "carta";
+        const projectRef = ref(db, `projects/${projectKey}`);
+
+        // Actualiza las donaciones mostradas
+        onValue(projectRef, (snapshot) => {
+            const data = snapshot.val();
+            const totalDonations = data ? data.totalDonations : 0;
+            donationsElement.textContent = `Inversion total: $${totalDonations} COP`;
+        });
+
+        // Abrir modal
+        investButton.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal
+        closeButton.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Manejo del formulario
+        investmentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("amount").value, 10);
+
+            if (isNaN(amount) || amount < 1000) {
+                alert("Por favor, ingresa una cantidad válida (mínimo 1000 COP).");
+                return;
+            }
+
+            get(projectRef).then((snapshot) => {
+                const data = snapshot.val();
+                const currentTotal = data ? data.totalDonations : 0;
+
+                update(projectRef, { totalDonations: currentTotal + amount })
+                    .then(() => {
+                        alert("¡Gracias por tu inversión!");
+                        modal.style.display = "none";
+                        investmentForm.reset();
+                    })
+                    .catch((error) => console.error("Error al actualizar donaciones:", error));
+            }).catch((error) => console.error("Error al obtener donaciones:", error));
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

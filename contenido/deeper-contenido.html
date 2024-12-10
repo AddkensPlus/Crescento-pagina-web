@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido</title>
+    <link rel="stylesheet" href="contenido.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="../perfil/perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor de contenido principal -->
+    <main>
+        <!-- Primer contenedor: Proyecto destacado -->
+        <section class="project-container">
+            <div class="project-image">
+                <img src="../img/project4.jpeg" alt="Imagen del proyecto">
+            </div>
+
+            <div class="project-info">
+                <h2 class="project-title">Deeper Connect Air: World's Best VPN Router</h2>
+                <p class="project-description">VPN descentralizada | Ciberseguridad de nivel empresarial | Bloqueador de publicidad | Tarifas mensuales cero | Plug & Play</p>
+                <p class="project-donations">Inversion total: $0 COP</p>
+                <button class="invest-button">Invertir en este proyecto</button>
+            </div>
+        </section>
+
+
+        <!-- Contenedor alternativo (color #bc8741) -->
+        <section class="custom-container bc8741">
+            <h2 class="custom-title">Introducción</h2>
+            <div class="centered-image">
+                <img src="../img/deeper1.jpeg" alt="Producto del proyecto">
+            </div>
+            <p class="custom-text">El Deeper Connect Air es un revolucionario enrutador VPN portátil diseñado para redefinir la forma en que experimentamos la privacidad, la seguridad y la accesibilidad en línea. Este dispositivo compacto combina la potencia de una red privada virtual descentralizada (DPN) con la comodidad de un diseño liviano y móvil, convirtiéndolo en una solución integral tanto para uso personal como profesional. Ideal para usuarios conscientes de la seguridad digital, el Deeper Connect Air utiliza tecnología blockchain para garantizar conexiones encriptadas de extremo a extremo, ofreciendo un nivel de protección sin igual contra amenazas cibernéticas, censura y geo-restricciones.</p>
+
+            <p class="custom-text">Más allá de ser un simple enrutador VPN, el Deeper Connect Air actúa como un ecosistema multifuncional que permite el acceso seguro y sin restricciones a contenido global, elimina anuncios intrusivos a nivel de red y mejora la velocidad de navegación. Su interfaz basada en AtomOS proporciona un control total sobre las configuraciones de red, haciéndolo accesible incluso para usuarios sin conocimientos técnicos avanzados. Además, incluye funciones innovadoras como la minería de DPR (Deeper Network Token), que recompensa a los usuarios por compartir ancho de banda no utilizado, una característica que lo convierte en una herramienta tanto práctica como rentable.</p>
+        </section>
+
+        <!-- Contenedor alternativo (color #f6f4f3) -->
+        <section class="custom-container f6f4f3">
+            <div class="flex-container">
+                <div class="left-image">
+                    <img src="../img/deeper2.jpg" alt="Otra imagen">
+                </div>
+
+                <div class="right-text">
+                    <h2 class="custom-title2">Novedades</h2>
+                    <p>El Deeper Connect Air destaca por sus innovadoras características:</p>
+
+                    <p><b>Tecnología VPN Descentralizada (DPN): </b>Permite eludir restricciones geográficas y censura de manera efectiva, proporcionando acceso ilimitado a contenido global sin comprometer tu privacidad.</p>
+                        
+                    <p><b>Bloqueo de anuncios: </b>Elimina pop-ups y anuncios intrusivos a nivel de red, mejorando la velocidad y la experiencia de navegación.</p>
+
+                    <p><b>Interfaz AtomOS: </b>Intuitiva y personalizable, permite administrar redes, conexiones y opciones de privacidad de manera sencilla.</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Modal para invertir -->
+    <div id="invest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invertir en este proyecto</h2>
+            <form id="investment-form">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" required placeholder="Nombre - Apellido">
+
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+                <label for="expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="expiration" required maxlength="5" placeholder="MM/AA">
+
+                <label for="cvv">Código CVV:</label>
+                <input type="password" id="cvv" required maxlength="3" placeholder="123">
+
+                <label for="amount">Cantidad a invertir (COP):</label>
+                <input type="number" id="amount" required min="1000" step="1000" placeholder="Min. 1000 COP">
+
+                <button type="submit" class="submit-button">Confirmar inversión</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase desde CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, set, get, update, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAbSzqzrVS57vELGI-G6ucRbyp3kpglcg",
+            authDomain: "crescentobd-df080.firebaseapp.com",
+            databaseURL: "https://crescentobd-df080-default-rtdb.firebaseio.com",
+            projectId: "crescentobd-df080",
+            storageBucket: "crescentobd-df080.appspot.com",
+            messagingSenderId: "632561275915",
+            appId: "1:632561275915:web:0940af834cbf31a819a30e",
+            measurementId: "G-46K91H4PVE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Referencias HTML y lógica de inversión
+        const investButton = document.querySelector(".invest-button");
+        const modal = document.getElementById("invest-modal");
+        const closeButton = document.querySelector(".close-button");
+        const investmentForm = document.getElementById("investment-form");
+        const donationsElement = document.querySelector(".project-donations");
+
+        const projectKey = "deeper";
+        const projectRef = ref(db, `projects/${projectKey}`);
+
+        // Actualiza las donaciones mostradas
+        onValue(projectRef, (snapshot) => {
+            const data = snapshot.val();
+            const totalDonations = data ? data.totalDonations : 0;
+            donationsElement.textContent = `Inversion total: $${totalDonations} COP`;
+        });
+
+        // Abrir modal
+        investButton.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal
+        closeButton.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Manejo del formulario
+        investmentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("amount").value, 10);
+
+            if (isNaN(amount) || amount < 1000) {
+                alert("Por favor, ingresa una cantidad válida (mínimo 1000 COP).");
+                return;
+            }
+
+            get(projectRef).then((snapshot) => {
+                const data = snapshot.val();
+                const currentTotal = data ? data.totalDonations : 0;
+
+                update(projectRef, { totalDonations: currentTotal + amount })
+                    .then(() => {
+                        alert("¡Gracias por tu inversión!");
+                        modal.style.display = "none";
+                        investmentForm.reset();
+                    })
+                    .catch((error) => console.error("Error al actualizar donaciones:", error));
+            }).catch((error) => console.error("Error al obtener donaciones:", error));
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

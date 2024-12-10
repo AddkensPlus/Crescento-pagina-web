@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="styles_main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            margin-top: 20px;
+        }
+
+        .info p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .info span {
+            font-weight: bold;
+        }
+
+        .error-message {
+            text-align: center;
+            font-size: 18px;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        .btn-back img {
+            display: block;
+            margin: 0 auto;
+            width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="main.html" class="logo">
+            <img src="img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+    </header>
+
+    <div class="container" id="profileContainer" style="display: none;">
+        <h1>Información de usuario</h1>
+        <div class="info">
+            <p><span class="label">Nombre:</span> <span id="userName">Cargando...</span></p>
+            <p><span class="label">Correo:</span> <span id="userEmail">Cargando...</span></p>
+            <p><span class="label">Contraseña:</span> <span id="userPassword">Cargando...</span></p>
+            
+        </div>
+       
+    </div>
+
+    <div class="container" id="errorContainer" style="display: none;">
+        <p class="error-message">No hay un usuario autenticado. Por favor, inicie sesión primero.</p>
+        <div class="btn-back">
+            <img src="C:\Users\Duvan Bustos\Documents\Crescento Comercio\image\logo oscuro.png"  onclick="window.location.href='index.html'">
+        </div>
+    </div>
+
+    <script type="module">
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyDpMgq99b-w6Hcxc_XSsROxfUvAz9nfrf8",
+          authDomain: "crescento-comercio-electronico.firebaseapp.com",
+          projectId: "crescento-comercio-electronico",
+          storageBucket: "crescento-comercio-electronico.appspot.com",
+          messagingSenderId: "1077663209135",
+          appId: "1:1077663209135:web:6bbaaae5bbebda4e1c665a",
+          measurementId: "G-1M78QXGHME",
+        };
+
+        // Inicializamos Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Escuchar el estado de autenticación del usuario
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Mostrar el contenedor de perfil
+                document.getElementById("profileContainer").style.display = "block";
+                document.getElementById("errorContainer").style.display = "none";
+                
+                // Mostrar la información del usuario
+                document.getElementById("userEmail").textContent = user.email || 'No disponible';
+                document.getElementById("userPassword").textContent = "********"; 
+
+                // Obtener el nombre del usuario desde Firestore
+                const userRef = doc(db, "usuarios", user.uid);
+                getDoc(userRef).then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById("userName").textContent = userData.name || 'No disponible';
+                    } else {
+                        console.log("No se encontró el documento de usuario.");
+                    }
+                }).catch((error) => {
+                    console.log("Error al obtener los datos del usuario:", error);
+                });
+            } else {
+                // Si no hay usuario autenticado, mostrar el mensaje de error
+                document.getElementById("profileContainer").style.display = "none";
+                document.getElementById("errorContainer").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido</title>
+    <link rel="stylesheet" href="contenido.css">
+    <link rel="website icon" type="png" href="../img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="../main.html" class="logo">
+            <img src="../img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="../img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="../perfil/perfil.html" class="profile-icon">
+            <img src="../img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor de contenido principal -->
+    <main>
+        <!-- Primer contenedor: Proyecto destacado -->
+        <section class="project-container">
+            <div class="project-image">
+                <img src="../img/project6.jpeg" alt="Imagen del proyecto">
+            </div>
+
+            <div class="project-info">
+                <h2 class="project-title">Knock Off: La batalla por la imaginación</h2>
+                <p class="project-description">"Knock Off" es un juego de lucha uno contra uno de ritmo rápido ambientado en un mundo nostálgico donde las figuras de acción cobran vida.</p>
+                <p class="project-donations">Inversion total: $0 COP</p>
+                <button class="invest-button">Invertir en este proyecto</button>
+            </div>
+        </section>
+
+
+        <!-- Contenedor alternativo (color #bc8741) -->
+        <section class="custom-container bc8741">
+            <h2 class="custom-title">Introducción</h2>
+            <div class="centered-image">
+                <img src="../img/project7.jpg" alt="Producto del proyecto">
+            </div>
+            <p class="custom-text">Bienvenido al mundo de Knock Off, un juego divertido y emocionante que seguro atraerá tanto a los fanáticos de los juegos de lucha como a los entusiastas de los juguetes. El juego presenta una variedad de personajes, cada uno con sus propios movimientos y habilidades únicos.</p>
+
+            <p class="custom-text">Los jugadores son transportados al vibrante mundo de los juguetes de figuras de acción, que cobran vida dentro de los confines del dormitorio de un niño. Aquí, los objetos cotidianos se convierten en campos de batalla épicos y lo que está en juego es tan alto como la imaginación de un niño.</p>
+        </section>
+
+        <!-- Contenedor alternativo (color #f6f4f3) -->
+        <section class="custom-container f6f4f3">
+            <div class="flex-container">
+                <div class="left-image">
+                    <img src="../img/project8.jpeg" alt="Otra imagen">
+                </div>
+
+                <div class="right-text">
+                    <h2 class="custom-title2">Narrativa</h2>
+                    <p>En la habitación de Johnny, los juguetes libran encarnizadas batallas por la supremacía. La llegada de Maximus, un nuevo y poderoso juguete, lo pone todo patas arriba cuando toma el control. Los juguetes de Johnny forman una valiente resistencia, pero rápidamente son desterrados a la desolada Zona Olvidada, un espacio oscuro y peligroso debajo de la casa.</p>
+
+                    <p>Maximus está drenando en secreto la imaginación de Johnny mientras duerme, volviéndose más fuerte a cada minuto. ¿Podrán los juguetes escapar de la Zona Olvidada y detenerlo antes de que sea demasiado tarde? ¿Descubrirán el secreto detrás del poder de Maximus, la clave para derrotarlo de una vez por todas?</p>
+                        
+                    <p>Knock Off celebra el valor de todos los juguetes, sean de marca o no, ya que Johnny los ve como algo más que juguetes, sino como amigos. El juego es un homenaje nostálgico a la imaginación, el trabajo en equipo y la magia que ocurre cuando creemos en los demás y en nosotros mismos.</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <!-- Modal para invertir -->
+    <div id="invest-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Invertir en este proyecto</h2>
+            <form id="investment-form">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" required placeholder="Nombre - Apellido">
+
+                <label for="card-number">Número de tarjeta:</label>
+                <input type="text" id="card-number" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+                <label for="expiration">Fecha de expiración (MM/AA):</label>
+                <input type="text" id="expiration" required maxlength="5" placeholder="MM/AA">
+
+                <label for="cvv">Código CVV:</label>
+                <input type="password" id="cvv" required maxlength="3" placeholder="123">
+
+                <label for="amount">Cantidad a invertir (COP):</label>
+                <input type="number" id="amount" required min="1000" step="1000" placeholder="Min. 1000 COP">
+
+                <button type="submit" class="submit-button">Confirmar inversión</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase desde CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getDatabase, ref, set, get, update, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDAbSzqzrVS57vELGI-G6ucRbyp3kpglcg",
+            authDomain: "crescentobd-df080.firebaseapp.com",
+            databaseURL: "https://crescentobd-df080-default-rtdb.firebaseio.com",
+            projectId: "crescentobd-df080",
+            storageBucket: "crescentobd-df080.appspot.com",
+            messagingSenderId: "632561275915",
+            appId: "1:632561275915:web:0940af834cbf31a819a30e",
+            measurementId: "G-46K91H4PVE"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Referencias HTML y lógica de inversión
+        const investButton = document.querySelector(".invest-button");
+        const modal = document.getElementById("invest-modal");
+        const closeButton = document.querySelector(".close-button");
+        const investmentForm = document.getElementById("investment-form");
+        const donationsElement = document.querySelector(".project-donations");
+
+        const projectKey = "knock-off";
+        const projectRef = ref(db, `projects/${projectKey}`);
+
+        // Actualiza las donaciones mostradas
+        onValue(projectRef, (snapshot) => {
+            const data = snapshot.val();
+            const totalDonations = data ? data.totalDonations : 0;
+            donationsElement.textContent = `Inversion total: $${totalDonations} COP`;
+        });
+
+        // Abrir modal
+        investButton.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+
+        // Cerrar modal
+        closeButton.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Manejo del formulario
+        investmentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const amount = parseInt(document.getElementById("amount").value, 10);
+
+            if (isNaN(amount) || amount < 1000) {
+                alert("Por favor, ingresa una cantidad válida (mínimo 1000 COP).");
+                return;
+            }
+
+            get(projectRef).then((snapshot) => {
+                const data = snapshot.val();
+                const currentTotal = data ? data.totalDonations : 0;
+
+                update(projectRef, { totalDonations: currentTotal + amount })
+                    .then(() => {
+                        alert("¡Gracias por tu inversión!");
+                        modal.style.display = "none";
+                        investmentForm.reset();
+                    })
+                    .catch((error) => console.error("Error al actualizar donaciones:", error));
+            }).catch((error) => console.error("Error al obtener donaciones:", error));
+        });
+
+        // Cerrar modal al hacer clic afuera
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

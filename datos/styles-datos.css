@@ -1,0 +1,319 @@
+/* Estilos generales de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f4f3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado */
+header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px;
+    border-bottom: 1px solid #bc8741;
+}
+
+/* Logo */
+.logo img {
+    width: 120px;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 120px;
+    width: 60%;
+}
+
+.search-bar img {
+    width: 20px;
+    margin-right: 5px; /* Espacio entre la lupa y el input */
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #98968a;
+}
+
+/* Icono de perfil */
+.profile-icon img {
+    width: 40px;
+}
+
+/* Contenedor principal */
+.main-content {
+    display: flex;
+    max-width: 1200px; /* Ancho máximo para centrar el contenido */
+    width: 100%;
+    padding: 20px;
+    padding-left: 100px;
+    gap: 20px;
+    justify-content: center; /* Centra el contenido dentro de la página */
+}
+
+/* Botones de categorías */
+.category-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category-buttons button {
+    background-color: #ffffff;
+    color: gray;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-buttons button:hover {
+    background-color: #bc8741;
+    color: #ffffff;
+}
+
+/* Sección de Proyectos populares */
+.popular-projects-section {
+    position: relative;
+    width: 70%;
+    overflow: hidden;
+    height: 300px;
+}
+
+.section-title {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 10;
+}
+
+/* Contenedor de imágenes */
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-images a {
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen para que se vea completa en el contenedor */
+}
+
+/* Puntos de navegación */
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: gray;
+}
+
+
+/* Sección "Descubre nuevos proyectos" */
+.discover-projects {
+    margin: 0; /* Elimina márgenes para que el fondo se extienda */
+    padding: 0;
+}
+
+.discover-background {
+    background-color: #bc8741; /* Fondo que ocupa toda la página */
+    display: flex;
+    max-width: 1344px; /* Ancho máximo para centrar el contenido */
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto; /* Centra el contenido */   
+}
+
+/* Contenedor del contenido que respeta los márgenes */
+.discover-container {
+    width: 90%; /* Márgenes laterales establecidos previamente */
+    margin: 0 auto; /* Centra el contenido */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Título de la sección */
+.discover-title {
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Carrusel */
+.discover-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Botones de flechas */
+.discover-arrow {
+    background-color: #ffffff;
+    border: none;
+    color: #bc8741;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 5;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.discover-arrow.left {
+    left: 0px;
+}
+
+.discover-arrow.right {
+    right: 0px;
+}
+
+/* Contenedor de proyectos */
+.discover-projects-container {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s ease;
+    width: calc(300px * 5); /* 5 proyectos */
+}
+
+/* Estilo de cada proyecto */
+.discover-project {
+    flex: 0 0 300px; /* Cada proyecto ocupa un ancho fijo */
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 73px;   
+}
+
+.discover-project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animacion de escala al pasar el mouse */
+.discover-project:hover {
+    transform: scale(1.1);
+}
+
+
+/* Sección Sobre Nosotros */
+.about-us {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.about-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    color: #bc8741; /* Color acorde al diseño */
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    text-align: justify;
+    color: #4a4a4a; /* Texto en gris oscuro */
+    line-height: 1.8; /* Espaciado entre líneas */
+    margin-bottom: 20px; /* Separación entre párrafos */
+}
+
+
+/* Pie de página */
+footer {
+    background-color: #f6f4f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+footer img {
+    width: 500px;
+    padding-left: 300px;
+    padding-top: 0px;
+    padding-right: 300px;
+}
+
+footer h3 {
+    margin: 0 0 10px 0;
+    color: #4a4a4a;
+    padding-right: 450px;
+    padding-top: 45px;
+    padding-bottom: 5px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin-bottom: 15px; /* Espacio debajo de cada texto */
+}
+
+footer ul li a {
+    color: #4a4a4a;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}

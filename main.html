@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescento</title>
+    <!-- Enlazamos el archivo CSS -->
+    <link rel="stylesheet" href="styles_main.css">
+    <link rel="website icon" type="png" href="img/logo-blanco-vacio.png">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <!-- Logo de la página, enlaza a la página principal -->
+        <a href="index.html" class="logo">
+            <img src="img/logo oscuro.png" alt="Logo Crescento">
+        </a>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <img src="img/lupa.png" alt="Icono de búsqueda"> <!-- Icono de búsqueda alineado a la izquierda -->
+            <input type="text" placeholder="Buscar proyectos, categorías..." aria-label="Buscar proyectos">
+        </div>
+        <!-- Icono de perfil, enlaza a la página de perfil -->
+        <a href="perfil.html" class="profile-icon">
+            <img src="img/perfil.png" alt="Icono de perfil">
+        </a>
+    </header>
+
+    <!-- Contenedor principal de la página -->
+    <main>
+        <div class="main-content">
+            <!-- Sección de categorías (botones) -->
+            <aside class="category-buttons">
+                <button onclick="location.href='main.html'">Deporte</button>
+                <button onclick="location.href='main.html'">Tecnología</button>
+                <button onclick="location.href='main.html'">Arte</button>
+                <button onclick="location.href='main.html'">Videojuegos</button>
+                <button onclick="location.href='main.html'">Música</button>
+                <button onclick="location.href='main.html'">Educacion</button>
+                <button onclick="location.href='main.html'">Emprendimientos</button>
+            </aside>
+
+            <!-- SECCION DE PROYECTOS POPULARES -->
+            <section class="popular-projects-section">
+                <!-- Título de la sección -->
+                <h2 class="section-title">Proyectos populares</h2>
+                <!-- Contenedor de las imágenes -->
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <!-- Cada imagen de proyecto está dentro de un enlace -->
+                        <a href="contenido/contenido.html"><img src="img/project6.jpeg" alt="Proyecto 1"></a>
+                        <a href="contenido/moon-contenido.html"><img src="img/project2.jpeg" alt="Proyecto 2"></a>
+                        <a href="contenido/carta-contenido.html"><img src="img/project3.jpeg" alt="Proyecto 3"></a>
+                    </div>
+                    <!-- Puntos de navegación -->
+                    <div class="carousel-dots">
+                        <span onclick="showSlide(0)" class="dot"></span>
+                        <span onclick="showSlide(1)" class="dot"></span>
+                        <span onclick="showSlide(2)" class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!--SECCION DESCUBRIR NUEVOS PROYECTOS-->
+        <section class="discover-projects">
+            <!-- Contenedor para el color de fondo que ocupa toda la página -->
+            <div class="discover-background">
+                <!-- Contenedor del contenido con márgenes respetados -->
+                <div class="discover-container">
+                    <!-- Título de la sección -->
+                    <h2 class="discover-title">Descubre nuevos proyectos</h2>
+                    <!-- Carrusel -->
+                    <div class="discover-carousel">
+                        <button class="discover-arrow left" onclick="scrollDiscover(-1)">&#x276E;</button>
+                        <div class="discover-projects-container">
+                            <div class="discover-project"><a href="contenido/dragon-contenido.html"><img src="img/dragon.jpeg" alt="Proyecto 1"></a></div>
+                            <div class="discover-project"><a href="contenido/moon-contenido.html"><img src="img/project2.jpeg" alt="Proyecto 2"></a></div>
+                            <div class="discover-project"><a href="contenido/carta-contenido.html"><img src="img/project3.jpeg" alt="Proyecto 3"></a></div>
+                            <div class="discover-project"><a href="contenido/deeper-contenido.html"><img src="img/project4.jpeg" alt="Proyecto 4"></a></div>
+                            <div class="discover-project"><a href="contenido/robot-contenido.html"><img src="img/project5.jpeg" alt="Proyecto 5"></a></div>
+                            <div class="discover-project"><a href="contenido/contenido.html"><img src="img/project6.jpeg" alt="Proyecto 6"></a></div>
+                        </div>
+                        <button class="discover-arrow right" onclick="scrollDiscover(1)">&#x276F;</button>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        
+        <!--SECCION SOBRE NOSOTROS-->
+        <section class="about-us">
+            <!-- Título de la sección -->
+            <h2 class="about-title">SOBRE NOSOTROS</h2>
+            <!-- Contenedor del texto -->
+            <div class="about-text">
+                <p>
+                    El ámbito del proyecto Crescento se enfoca en optimizar la interacción entre emprendedores e inversores, facilitando el financiamiento de proyectos innovadores mediante una plataforma digital segura y colaborativa. Los emprendedores pueden publicar sus ideas o productos para atraer inversionistas, mientras los inversores exploran estas propuestas y eligen financiar aquellas alineadas con sus intereses. Esta interacción es transparente y está basada en un modelo de participación clara, donde los inversores reciben un porcentaje de las ganancias o del producto final como contraprestación por su apoyo.
+                </p>
+                <p>
+                    La plataforma simplifica la gestión de fondos mediante wallets digitales, permitiendo a los usuarios vincular sus cuentas y agregar capital a través de pasarelas de pago en diversas monedas, como el peso colombiano. Estas wallets se utilizan para realizar transferencias seguras hacia los proyectos seleccionados, gracias al respaldo de tecnología blockchain, que asegura la trazabilidad y transparencia de cada operación. La validación previa de los proyectos garantiza la viabilidad de las propuestas publicadas, proporcionando confianza tanto a los inversores como a los emprendedores.
+                </p>
+                <p>
+                    Crescento fomenta una interacción constante entre las partes, los inversores pueden monitorear en tiempo real el estado de sus inversiones, y los emprendedores pueden actualizar la información de sus proyectos para mantener el compromiso de sus financiadores. Este ecosistema es supervisado por entidades reguladoras y respaldado por un proveedor de servicios blockchain, lo que asegura el cumplimiento normativo y la seguridad de todas las transacciones. Crescento genera así un entorno de colaboración estructurada que promueve el crecimiento sostenible y la creación de oportunidades a través de relaciones financieras ágiles y confiables.
+                </p>
+            </div>
+        </section>
+
+        <!--PIE DE PAGINA-->
+        <footer style="background-color: #bc8741;  display: flex; justify-content: space-between; align-items: flex-start;">
+            <!-- Logo de la página -->
+            <div>
+                <img src="img/logo claro.png" alt="Logo de la página" style="width: 300px;">
+            </div>
+        
+            <!-- Enlaces y texto -->
+            <div style="color: white;">
+                <h3 style="margin: 0 0 10px 0;">Acerca de</h3>
+                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <li>
+                        <a href="datos/datos.html" style="color: white; text-decoration: none;">Politica general de uso</a>
+                    </li>
+                    <li>
+                        <a href="datos/proteccion.html" style="color: white; text-decoration: none;">Proteccion de datos personales</a>
+                    </li>
+                    <li>
+                        <a href="datos/pago.html" style="color: white; text-decoration: none;">Seguridad en Métodos de Pago</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        
+        
+    </main>
+
+    <!-- Enlazamos el archivo JavaScript -->
+    <script src="script_main.js"></script>
+</body>
+</html>
